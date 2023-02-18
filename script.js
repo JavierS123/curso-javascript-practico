@@ -3,10 +3,27 @@ const menuEmail = $('.navbar-email');
 const desktopMenu = $('.desktop-menu');
 const mobileMenuIcon = $('.mobile-menu-icon')
 const mobileMenu = $('.mobile-menu');
+const menuCarritoIcon = $('.navbar-shopping-cart');
+const aside = $('.product-detail')
 
-menuEmail.addEventListener('click', function(){toggleMenu(desktopMenu)})
-mobileMenuIcon.addEventListener('click', function(){toggleMenu(mobileMenu)})
+menuEmail.addEventListener('click', showMyDesktopMenu);
 
-function toggleMenu(elemento) {
-    elemento.classList.toggle('inactive')
+function showMyDesktopMenu() {
+    desktopMenu.classList.toggle('inactive');
+    aside.classList.add('inactive');
+}
+
+mobileMenuIcon.addEventListener('click', showMobileMenu);
+
+function showMobileMenu(){
+    mobileMenu.classList.toggle('inactive');
+    aside.classList.add('inactive');
+}
+
+menuCarritoIcon.addEventListener('click', showMyOrder);
+
+function showMyOrder(){
+    aside.classList.toggle('inactive');
+    mobileMenu.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
 }
