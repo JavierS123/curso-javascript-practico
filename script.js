@@ -5,26 +5,50 @@ const mobileMenuIcon = $('.mobile-menu-icon')
 const mobileMenu = $('.mobile-menu');
 const menuCarritoIcon = $('.navbar-shopping-cart');
 const shoppingCartContainer = $('.shoppingCartContainer')
+const productDetailContainer = $('#productDetail')
+const productDetailClose = $('.product-detail-close')
 const cardsContainer = $('.cards-container')
+const myOrderMobile = $('.myOrderArrow')
 
-menuEmail.addEventListener('click', showMyDesktopMenu);
+menuEmail.addEventListener('click', toggleDesktopMenu);
 
-function showMyDesktopMenu() {
+function toggleDesktopMenu() {
     desktopMenu.classList.toggle('inactive');
     shoppingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.add('inactive')
 }
 
-mobileMenuIcon.addEventListener('click', showMobileMenu);
+mobileMenuIcon.addEventListener('click', toggleMobileMenu);
 
-function showMobileMenu(){
+function toggleMobileMenu(){
     mobileMenu.classList.toggle('inactive');
     shoppingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.add('inactive');
 }
 
-menuCarritoIcon.addEventListener('click', showMyOrder);
+menuCarritoIcon.addEventListener('click', toggleMyOrder);
+/*CLOSE THE ORDER MENU ON MOBILE USING THE CLOSE ARROW*/
+myOrderMobile.addEventListener('click', toggleMyOrder);
 
-function showMyOrder(){
+function toggleMyOrder(){
     shoppingCartContainer.classList.toggle('inactive');
+    productDetailContainer.classList.add('inactive');
+    mobileMenu.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+}
+
+function openProductDetailAside(){
+    productDetailContainer.classList.remove('inactive');
+    shoppingCartContainer.classList.add('inactive');
+    desktopMenu.classList.add('inactive');
+    mobileMenu.classList.add('inactive');
+}
+
+productDetailClose.addEventListener('click', closeProductDetailAside);
+
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
     mobileMenu.classList.add('inactive');
     desktopMenu.classList.add('inactive');
 }
@@ -52,8 +76,9 @@ for (product of productList){
     //product = {name, price, image}--> product.image
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
+    productImg.addEventListener('click', openProductDetailAside);
 
-    const productInfo = document.createElement('div')
+    const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
     
     const productInfoDiv= document.createElement('div')
