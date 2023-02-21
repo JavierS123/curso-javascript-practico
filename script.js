@@ -4,27 +4,27 @@ const desktopMenu = $('.desktop-menu');
 const mobileMenuIcon = $('.mobile-menu-icon')
 const mobileMenu = $('.mobile-menu');
 const menuCarritoIcon = $('.navbar-shopping-cart');
-const aside = $('.product-detail')
+const shoppingCartContainer = $('.shoppingCartContainer')
 const cardsContainer = $('.cards-container')
 
 menuEmail.addEventListener('click', showMyDesktopMenu);
 
 function showMyDesktopMenu() {
     desktopMenu.classList.toggle('inactive');
-    aside.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
 }
 
 mobileMenuIcon.addEventListener('click', showMobileMenu);
 
 function showMobileMenu(){
     mobileMenu.classList.toggle('inactive');
-    aside.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
 }
 
 menuCarritoIcon.addEventListener('click', showMyOrder);
 
 function showMyOrder(){
-    aside.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
     mobileMenu.classList.add('inactive');
     desktopMenu.classList.add('inactive');
 }
@@ -51,7 +51,7 @@ for (product of productList){
 
     //product = {name, price, image}--> product.image
     const productImg = document.createElement('img');
-    productImg.setAttribute('src', 'product.image');
+    productImg.setAttribute('src', product.image);
 
     const productInfo = document.createElement('div')
     productInfo.classList.add('product-info');
